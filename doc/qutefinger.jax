@@ -1,0 +1,148 @@
+*qutefinger.txt*	|QuickFix|に使いやすいインターフェイスを用意する。
+
+Author  : LeafCage <leafcage+vim @ gmail.com>
+License : MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+==============================================================================
+目次						*qutefinger-contents*
+
+概要				|qutefinger-introduction|
+設定例				|qutefinger-examples|
+インターフェイス		|qutefinger-interface|
+  変数				  |qutefinger-variables|
+  キーマッピング		  |qutefinger-key-mappings|
+  関数				  |qutefinger-functions|
+
+
+==============================================================================
+概要						*qutefinger-introduction*
+
+*qutefinger* は|QuickFix| |location-list| で使えるキーマッピングを提供します。
+QuickFixモードとロケーションリストモードを切り替えることで、同じキーマッピング
+で双方のコントロールが出来ます。
+
+最新版:
+https://github.com/LeafCage/qutefinger.vim
+
+
+==============================================================================
+設定例						*qutefinger-examples*
+>
+	nmap cz <Plug>(qutefinger-toggle-mode)
+	nmap cn <Plug>(qutefinger-next)
+	nmap cp <Plug>(qutefinger-prev)
+	nmap cP <Plug>(qutefinger-older)
+	nmap cN <Plug>(qutefinger-newer)
+	nmap cv <Plug>(qutefinger-toggle-win)
+<
+
+==============================================================================
+インターフェイス				*qutefinger-interface*
+
+------------------------------------------------------------------------------
+変数						*qutefinger-variables*
+
+g:qutefinger_focus_on_open			*g:qutefinger_focus_on_open*
+	既定値: 0
+	非0 だとquickfixウィンドウを開いたときにquickfixウィンドウにフォーカス
+	を移す。
+
+
+g:qutefinger_bufmappings			*g:qutefinger_bufmappings*
+    既定値: {"close": "q", "enter": "<CR>", "next": "<C-n>", "prev": "<C-p>"}
+	quickfixバッファでのローカルキーマッピングを定義する辞書。
+	辞書には以下のキーを定義しても良い。未定義のキーには既定値が使われる。
+
+	{key}	{description}					{default}
+	--------------------------------			--------~
+	close	quickfixバッファを閉じる。			q
+	enter	現在カーソルがあるエラー箇所へジャンプする	<CR>
+	next	次のエラーをアクティブにする			<C-n>
+	prev	前のエラーをアクティブにする			<C-p>
+
+
+------------------------------------------------------------------------------
+キーマッピング					*qutefinger-key-mappings*
+
+<Plug>(qutefinger-toggle-mode)		*<Plug>(qutefinger-toggle-mode)*
+	有効モード: ノーマル
+	quickfixモードとロケーションリストモードを切り替える。
+
+
+<Plug>(qutefinger-next)				*<Plug>(qutefinger-next)*
+	有効モード: ノーマル
+	次のエラーにジャンプする。|:cnext| |:lnext|
+
+
+<Plug>(qutefinger-prev)				*<Plug>(qutefinger-prev)*
+	有効モード: ノーマル
+	前のエラーにジャンプする。|:cprevious| |:lprevious|
+
+
+<Plug>(qutefinger-nfile)			*<Plug>(qutefinger-nfile)*
+	有効モード: ノーマル
+	次のファイルのエラーにジャンプする。|:cnfile| |:lnfile|
+
+
+<Plug>(qutefinger-pfile)			*<Plug>(qutefinger-pfile)*
+	有効モード: ノーマル
+	前のファイルのエラーにジャンプする。|:cpfile| |:lpfile|
+
+
+<Plug>(qutefinger-older)			*<Plug>(qutefinger-older)*
+	有効モード: ノーマル
+	古いエラーリストへ移動する。|:colder| |:lolder|
+
+
+<Plug>(qutefinger-newer)			*<Plug>(qutefinger-newer)*
+	有効モード: ノーマル
+	新しいエラーリストへ移動する。|:cnewer| |:lnewer|
+
+
+<Plug>(qutefinger-win)				*<Plug>(qutefinger-win)*
+	有効モード: ノーマル
+	エラーがあるならウィンドウを開く。|:cwindow| |:lwindow|
+
+
+<Plug>(qutefinger-close)			*<Plug>(qutefinger-close)*
+	有効モード: ノーマル
+	QuickFixウィンドウ、ロケーションリストウィンドウを閉じる。
+	|:cclose| |:lclose|
+
+
+<Plug>(qutefinger-toggle-win)		*<Plug>(qutefinger-toggle-win)*
+	有効モード: ノーマル
+	QuickFixウィンドウ、ロケーションリストウィンドウが開かれているなら閉じ
+	る。そうでなければ開く。
+
+
+------------------------------------------------------------------------------
+関数						*qutefinger-functions*
+
+qutefinger#mode([{mode}])			*qutefinger#mode()*
+	現在のモードを表示する。
+	モード{mode}が与えられるとそのモードにセットされる。
+	モード{mode}は "c" (QuickFixモード) か "l" (ロケーションリストモード)
+	で与えられなければならない。
+
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:
