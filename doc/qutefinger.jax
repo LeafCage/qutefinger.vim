@@ -67,7 +67,7 @@ g:qutefinger_focus_on_open			*g:qutefinger_focus_on_open*
 
 
 g:qutefinger_bufmappings			*g:qutefinger_bufmappings*
-    既定値: {"close": "q", "enter": "<CR>", "next": "<C-n>", "prev": "<C-p>"}
+	既定値: {}
 	quickfixバッファでのローカルキーマッピングを定義する辞書。
 	辞書には以下のキーを定義しても良い。未定義のキーには既定値が使われる。
 

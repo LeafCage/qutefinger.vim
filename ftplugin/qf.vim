@@ -3,11 +3,12 @@ let s:save_cpo = &cpo| set cpo&vim
 scriptencoding utf-8
 "=============================================================================
 setl nobl
+
 let s:mode = getloclist(0)!=[] ? 'l' : 'c'
-exe 'nnoremap <silent><buffer>'. g:qutefinger_bufmappings.close. ' :<C-u>'. s:mode. 'close<CR>'
-exe 'nnoremap <silent><buffer>'. g:qutefinger_bufmappings.enter. ' :<C-u>.'. s:mode. s:mode. '<CR>zvzz'
-exe 'nnoremap <silent><buffer>'. g:qutefinger_bufmappings.next.  ' :<C-u>exe v:count. "'. s:mode. 'next"<CR>zvzz<C-w>p'
-exe 'nnoremap <silent><buffer>'. g:qutefinger_bufmappings.prev.  ' :<C-u>exe v:count. "'. s:mode. 'prev"<CR>zvzz<C-w>p'
+exe 'nnoremap <silent><buffer>'. get(g:qutefinger_bufmappings, 'close', 'q'). ' :<C-u>'. s:mode. 'close<CR>'
+exe 'nnoremap <silent><buffer>'. get(g:qutefinger_bufmappings, 'enter', '<CR>'). ' :<C-u>.'. s:mode. s:mode. '<CR>zvzz'
+exe 'nnoremap <silent><buffer>'. get(g:qutefinger_bufmappings, 'next', '<C-n>').  ' :<C-u>exe v:count. "'. s:mode. 'next"<CR>zvzz<C-w>p'
+exe 'nnoremap <silent><buffer>'. get(g:qutefinger_bufmappings, 'prev', '<C-p>').  ' :<C-u>exe v:count. "'. s:mode. 'prev"<CR>zvzz<C-w>p'
 unlet s:mode
 
 "=============================================================================

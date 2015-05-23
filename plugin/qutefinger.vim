@@ -3,13 +3,7 @@ let s:save_cpo = &cpo| set cpo&vim
 scriptencoding utf-8
 "=============================================================================
 let g:qutefinger_focus_on_open = get(g:, 'qutefinger_focus_on_open', 0)
-let s:bufmappings_dfl = {'close': 'q', 'enter': '<CR>', 'next': '<C-n>', 'prev': '<C-p>'}
-if exists('g:qutefinger_bufmappings')
-  call extend(g:qutefinger_bufmappings, s:bufmappings_dfl, 'keep')
-else
-  let g:qutefinger_bufmappings = copy(s:bufmappings_dfl)
-end
-unlet s:bufmappings_dfl
+let g:qutefinger_bufmappings = get(g:, 'qutefinger_bufmappings', {})
 
 nnoremap <silent><Plug>(qutefinger-toggle-mode)    :<C-u>call qutefinger#toggle_mode()<CR>
 nnoremap <silent><Plug>(qutefinger-next)   :<C-u>call qutefinger#next()<CR>
