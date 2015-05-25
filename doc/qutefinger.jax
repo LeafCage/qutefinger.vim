@@ -68,14 +68,15 @@ g:qutefinger_focus_on_open			*g:qutefinger_focus_on_open*
 
 g:qutefinger_bufmappings			*g:qutefinger_bufmappings*
 	既定値: {}
-	quickfixバッファでのローカルキーマッピングを定義する辞書。
-	辞書には以下のキーを定義しても良い。未定義のキーには既定値が使われる。
+	QuickFixバッファでのローカルキーマッピングを定義する辞書。
+	辞書に以下のキーを定義しても良い。未定義のキーには既定の値が使われる。
 
-	{key}	{description}					{default}
-	--------------------------------			--------~
-	close	quickfixバッファを閉じる。			q
-	next	次のエラーをアクティブにする			<C-n>
-	prev	前のエラーをアクティブにする			<C-p>
+	{key}	{description}				{default}
+	--------------------------------		--------~
+	close	quickfixバッファを閉じる。		q
+	preview	QuickFixウィンドウを出ずにエラーを開く	p
+	next	次のエラーをアクティブにする		<C-n>
+	prev	前のエラーをアクティブにする		<C-p>
 
 
 ------------------------------------------------------------------------------
