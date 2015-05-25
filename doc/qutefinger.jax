@@ -74,7 +74,6 @@ g:qutefinger_bufmappings			*g:qutefinger_bufmappings*
 	{key}	{description}					{default}
 	--------------------------------			--------~
 	close	quickfixバッファを閉じる。			q
-	enter	現在カーソルがあるエラー箇所へジャンプする	<CR>
 	next	次のエラーをアクティブにする			<C-n>
 	prev	前のエラーをアクティブにする			<C-p>
 
