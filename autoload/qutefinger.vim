@@ -7,7 +7,9 @@ let s:mode = 'c'
 let s:_modename = {'c': 'quickfix', 'l': 'location-list'}
 function! s:get_qfwinnrs() "{{{
   let ret = []
+  let save_winnr = winnr()
   windo if &bt=='quickfix' | call add(ret, winnr()) | endif
+  exe save_winnr. 'wincmd w'
   return ret
 endfunction
 "}}}
